@@ -1,8 +1,8 @@
-
+# Add Commit Push
 import pygame
 import random
-image = pygame.image.load('planey.bmp')
-ground = pygame.image.load('groundy.bmp')
+image = pygame.image.load('img/planey.bmp')
+ground = pygame.image.load('img/groundy.bmp')
 a=0
 b=0
 # Define some colors
@@ -22,7 +22,7 @@ class Block(pygame.sprite.Sprite):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
-        self.image = pygame.image.load('enemyplaney.bmp')
+        self.image = pygame.image.load('img/enemyplaney.bmp')
 
 
         self.rect = self.image.get_rect()
@@ -43,7 +43,7 @@ class Player(pygame.sprite.Sprite):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
-        self.image = pygame.image.load('planey.bmp')
+        self.image = pygame.image.load('img/planey.bmp')
 
 
         self.rect = self.image.get_rect()
@@ -65,7 +65,7 @@ class Bullet(pygame.sprite.Sprite):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
-        self.image = pygame.image.load('shot.bmp')
+        self.image = pygame.image.load('img/shot.bmp')
 
 
         self.rect = self.image.get_rect()
