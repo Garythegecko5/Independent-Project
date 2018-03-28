@@ -1,37 +1,53 @@
+#HOMEWORK: Fixes List, Prioritize fixes
+#
 # Add Commit Push
 import pygame
 import random
 
-image = pygame.image.load('img/planey.bmp')
-ground = pygame.image.load('img/groundy.bmp')
-a=0
-b=0
 # Define some colors
-BLACK = (0, 0, 0)
+# BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
-RED = (255, 0, 0)
-BLUE = (0, 0, 255)
-value = 3
+# RED = (255, 0, 0)
+# BLUE = (0, 0, 255)
+
+player_plane = pygame.image.load('img/planey.bmp')
+ground = pygame.image.load('img/groundy.bmp')
+difficulty = 3
+
+# --- Functions
+def create_enemy(enemies,sprites):
+    # This represents an enemy
+    enemy = Enemy()
+
+    # Set a random location for the block
+    enemy.rect.x = (709)
+    enemy.rect.y = random.randrange(350)
+
+    # Add the block to the list of objects
+    enemies.add(enemy)
+    sprites.add(enemy)
+
+    return (enemies, sprites)
 
 # --- Classes
 
 
-class Block(pygame.sprite.Sprite):
+class Enemy(pygame.sprite.Sprite):
     """ This class represents the block. """
 
-    def __init__(self, color):
+    def __init__(self):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
         self.image = pygame.image.load('img/enemyplaney.bmp')
-
-
         self.rect = self.image.get_rect()
+
+
     def update(self):
-        """ Move the bullet. """
-        self.rect.x -= 0.5
+
+        self.rect.x -= 0.5 #Moving Enemy Forward
         if self.rect.x == 1:
-            all_sprites_list.remove(player)
+            sprites.remove(player)
 
 
 
@@ -45,8 +61,6 @@ class Player(pygame.sprite.Sprite):
         super().__init__()
 
         self.image = pygame.image.load('img/planey.bmp')
-
-
         self.rect = self.image.get_rect()
 
     def update(self):
@@ -56,7 +70,7 @@ class Player(pygame.sprite.Sprite):
         pos = pygame.mouse.get_pos()
 
         # Set the player y position to the mouse x position
-        self.rect.y = pos[0]
+        self.rect.y = pos[1]
 
 
 class Bullet(pygame.sprite.Sprite):
@@ -67,8 +81,6 @@ class Bullet(pygame.sprite.Sprite):
         super().__init__()
 
         self.image = pygame.image.load('img/shot.bmp')
-
-
         self.rect = self.image.get_rect()
 
     def update(self):
@@ -89,31 +101,22 @@ screen = pygame.display.set_mode([screen_width, screen_height])
 # --- Sprite lists
 
 # This is a list of every sprite. All blocks and the player block as well.
-all_sprites_list = pygame.sprite.Group()
+sprites = pygame.sprite.Group()
 
-# List of each block in the game
-block_list = pygame.sprite.Group()
+# List of each enemy in the game
+enemies = pygame.sprite.Group()
 
 # List of each bullet
-bullet_list = pygame.sprite.Group()
+bullets = pygame.sprite.Group()
 
 # --- Create the sprites
 
-for i in range(1):
-    # This represents a block
-    block = Block(BLUE)
 
-    # Set a random location for the block
-    block.rect.x = (709)
-    block.rect.y = random.randrange(350)
-
-    # Add the block to the list of objects
-    block_list.add(block)
-    all_sprites_list.add(block)
+create_enemy(enemies, sprites)
 
 # Create a red player block
 player = Player()
-all_sprites_list.add(player)
+sprites.add(player)
 
 # Loop until the user clicks the close button.
 done = False
@@ -126,8 +129,6 @@ player.rect.y = 370
 
 # -------- Main Program Loop -----------
 while not done:
-    block.rect.x + 3
-
 
     # --- Event Processing
     for event in pygame.event.get():
@@ -141,38 +142,30 @@ while not done:
             bullet.rect.x = player.rect.x
             bullet.rect.y = player.rect.y
             # Add the bullet to the lists
-            all_sprites_list.add(bullet)
-            bullet_list.add(bullet)
+            sprites.add(bullet)
+            bullets.add(bullet)
 
     # --- Game logic
 
     # Call the update() method on all the sprites
-    all_sprites_list.update()
+    sprites.update()
 
     # Calculate mechanics for each bullet
-    for bullet in bullet_list:
+    for bullet in bullets:
 
-        # See if it hit a block
-        block_hit_list = pygame.sprite.spritecollide(bullet, block_list, True)
+        # See if it hit an enemy
+        enemies_hit = pygame.sprite.spritecollide(bullet, enemies, True)
 
-        # For each block hit, remove the bullet and add to the score
-        for block in block_hit_list:
-            bullet_list.remove(bullet)
-            all_sprites_list.remove(bullet)
+        # For each enemy hit, remove the bullet and add to the score
+        for enemy in enemies_hit:
+            bullets.remove(bullet)
+            sprites.remove(bullet)
             score += 1
+
             print(score)
 
-            for i in range(random.randint(1,value)):
-                # This represents a block
-                block = Block(BLUE)
-
-                # Set a random location for the block
-                block.rect.x = (709)
-                block.rect.y = random.randrange(350)
-
-                # Add the block to the list of objects
-                block_list.add(block)
-                all_sprites_list.add(block)
+            for i in range(random.randint(1, difficulty)):
+                create_enemy(enemies,sprites)
 
 
 
@@ -180,9 +173,9 @@ while not done:
 
         # Remove the bullet if it flies up off the screen
 
-        if bullet.rect.y < -10:
-            bullet_list.remove(bullet)
-            all_sprites_list.remove(bullet)
+        if bullet.rect.x > 700:
+            bullets.remove(bullet)
+            sprites.remove(bullet)
 
 
     # --- Draw a frame
@@ -191,9 +184,9 @@ while not done:
     screen.fill(WHITE)
 
     # Draw all the spites
-    all_sprites_list.draw(screen)
+    sprites.draw(screen)
 
-    # Go ahead and update the screen with what we've drawn.
+    # Go ahead and update the screen with what I've drawn.
     pygame.display.flip()
 
     # --- Limit to 20 frames per second
