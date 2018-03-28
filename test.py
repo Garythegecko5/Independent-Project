@@ -1,6 +1,7 @@
 # Add Commit Push
 import pygame
 import random
+
 image = pygame.image.load('img/planey.bmp')
 ground = pygame.image.load('img/groundy.bmp')
 a=0
@@ -11,7 +12,7 @@ WHITE = (255, 255, 255)
 RED = (255, 0, 0)
 BLUE = (0, 0, 255)
 value = 3
-pygame.display.set_caption('Game Alpha 1.0')
+
 # --- Classes
 
 
@@ -197,4 +198,5 @@ while not done:
 
     # --- Limit to 20 frames per second
     clock.tick(60)
+    pygame.display.set_caption('Game Alpha 2.0')
 pygame.quit()
