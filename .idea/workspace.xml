@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d0bed7-18bc-4747-9e81-f110beb4b8ca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/adaptations.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/dummy.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/new_test.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/randoms.py" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/testing.py" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/enemyplaney.bmp" afterPath="$PROJECT_DIR$/img/enemyplaney.bmp" />
+      <change beforePath="$PROJECT_DIR$/groundy.bmp" afterPath="$PROJECT_DIR$/img/groundy.bmp" />
+      <change beforePath="$PROJECT_DIR$/homescreen.bmp" afterPath="$PROJECT_DIR$/img/homescreen.bmp" />
+      <change beforePath="$PROJECT_DIR$/planey.bmp" afterPath="$PROJECT_DIR$/img/planey.bmp" />
+      <change beforePath="$PROJECT_DIR$/shot.bmp" afterPath="$PROJECT_DIR$/img/shot.bmp" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +20,8 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/test.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+            <state relative-caret-position="99">
+              <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
               <folding>
                 <element signature="e#1#14#0" expanded="true" />
               </folding>
@@ -100,6 +99,11 @@
               <item name="Independent-Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Independent-Project" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Independent-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Independent-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -109,6 +113,11 @@
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\khuff\Desktop\Projects\Independent-Project\img" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -367,7 +376,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/shot.bmp">
+    <entry file="file://$PROJECT_DIR$/img/shot.bmp">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -412,8 +421,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="12" column="9" lean-forward="true" selection-start-line="12" selection-start-column="9" selection-end-line="12" selection-end-column="9" />
+        <state relative-caret-position="99">
+          <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
           <folding>
             <element signature="e#1#14#0" expanded="true" />
           </folding>
