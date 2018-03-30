@@ -3,6 +3,9 @@
 # Add Commit Push
 import pygame
 import random
+from menu_components import End_Screen
+from game_components import Enemy_Bullet, Player, Bullet, Enemy
+
 import time
 # Define some colors
 # BLACK = (0, 0, 0)
@@ -30,50 +33,30 @@ def create_enemy(enemies,sprites):
 
     return (enemies, sprites)
 
+
 # --- Classes
-class End_Screen(pygame.sprite.Sprite):
-    """ This class represents the endscreen. """
 
-    def __init__(self):
-        # Call the parent class (Sprite) constructor
-        super().__init__()
 
-        self.image = pygame.image.load('img/end.png')
-        self.rect = self.image.get_rect()
 
-class Enemy_Bullet(pygame.sprite.Sprite):
-    """ This class represents the bullet . """
-
-    def __init__(self):
-        # Call the parent class (Sprite) constructor
-        super().__init__()
-
-        self.image = pygame.image.load('img/enemyshot.png')
-        self.rect = self.image.get_rect()
-
-    def update(self):
-        """ Move the bullet. """
-        self.rect.x -= 30
-
-class Death(pygame.sprite.Sprite):
-    """ This class represents the block. """
-
-    def __init__(self):
-        # Call the parent class (Sprite) constructor
-        super().__init__()
-
-        self.image = pygame.image.load('img/destroyedplane.gif')
-        self.rect = self.image.get_rect()
-    def update(self):
-
-        self.rect.y += 5 #Moving Explosion Down
-        if self.rect.y >= 500:
-            deadplayers.remove(self)
-            sprites.remove(self)
-            death = End_Screen()
-            death.rect.x = (0)
-            death.rect.y = (0)
-            sprites.add(death)
+# class Death(pygame.sprite.Sprite):
+#     """ This class represents the block. """
+#
+#     def __init__(self):
+#         # Call the parent class (Sprite) constructor
+#         super().__init__()
+#
+#         self.image = pygame.image.load('img/destroyedplane.gif')
+#         self.rect = self.image.get_rect()
+#     def update(self):
+#
+#         self.rect.y += 5 #Moving Explosion Down
+#         if self.rect.y >= 500:
+#             deadplayers.remove(self)
+#             sprites.remove(self)
+#             death = End_Screen()
+#             death.rect.x = (0)
+#             death.rect.y = (0)
+#             sprites.add(death)
 
 
 
@@ -117,29 +100,17 @@ class Cloud(pygame.sprite.Sprite):
                 sprites.add(cloud)
                 sprites.remove(self)
 
-class Enemy(pygame.sprite.Sprite):
-    """ This class represents the block. """
 
-    def __init__(self):
-        # Call the parent class (Sprite) constructor
-        super().__init__()
-
-        self.image = pygame.image.load('img/enemy.gif')
-        self.rect = self.image.get_rect()
-
-
-    def update(self):
-
-        self.rect.x -= 0.5 #Moving Enemy Forward
-        if self.rect.x == 1:
-
-            sprites.remove(self)
-            playerexplosion = Death()
-            playerexplosion.rect.x = player.rect.x
-            playerexplosion.rect.y = player.rect.y
-            deadplayers.add(playerexplosion)
-            sprites.add(playerexplosion)
-            sprites.remove(player)
+        # if self.rect.x == 1:
+        #
+        #     sprites.remove(self)
+        #     # playerexplosion = Death()
+        #
+        #     playerexplosion.rect.x = player.rect.x
+        #     playerexplosion.rect.y = player.rect.y
+        #     deadplayers.add(playerexplosion)
+        #     sprites.add(playerexplosion)
+        #     sprites.remove(player)
 
         #if self.rect.y == player.rect.y:
             #bullet2 = Enemy_Bullet()
@@ -152,40 +123,10 @@ class Enemy(pygame.sprite.Sprite):
 
 
 
-class Player(pygame.sprite.Sprite):
-    """ This class represents the Player. """
-
-    def __init__(self):
-        """ Set up the player on creation. """
-        # Call the parent class (Sprite) constructor
-        super().__init__()
-
-        self.image = pygame.image.load('img/planey.gif')
-        self.rect = self.image.get_rect()
-
-    def update(self):
-        """ Update the player's position. """
-        # Get the current mouse position. This returns the position
-        # as a list of two numbers.
-        pos = pygame.mouse.get_pos()
-
-        # Set the player y position to the mouse x position
-        self.rect.y = pos[1]
 
 
-class Bullet(pygame.sprite.Sprite):
-    """ This class represents the bullet . """
 
-    def __init__(self):
-        # Call the parent class (Sprite) constructor
-        super().__init__()
 
-        self.image = pygame.image.load('img/shot.gif')
-        self.rect = self.image.get_rect()
-
-    def update(self):
-        """ Move the bullet. """
-        self.rect.x += 30
 
 
 
@@ -304,6 +245,11 @@ while not done:
         if bullet.rect.x > 700:
             bullets.remove(bullet)
             sprites.remove(bullet)
+    end = End_Screen()
+    if Enemy.win:
+        player.die()
+        if player.rect.y >= 400:
+            sprites.add(end)
 
 
 
