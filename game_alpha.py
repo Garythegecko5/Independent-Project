@@ -6,7 +6,7 @@ import random
 
 # Define some colors
 # BLACK = (0, 0, 0)
-WHITE = (255, 255, 255)
+WHITE = (76, 203, 255)
 # RED = (255, 0, 0)
 # BLUE = (0, 0, 255)
 
@@ -30,6 +30,16 @@ def create_enemy(enemies,sprites):
     return (enemies, sprites)
 
 # --- Classes
+
+class Cloud(pygame.sprite.Sprite):
+    """ This class represents the block. """
+
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        self.image = pygame.image.load('img/cloud.png')
+        self.rect = self.image.get_rect()
 
 class Enemy(pygame.sprite.Sprite):
     """ This class represents the block. """
@@ -88,6 +98,7 @@ class Bullet(pygame.sprite.Sprite):
         self.rect.x += 30
 
 
+
 # --- Create the window
 
 # Initialize Pygame
@@ -109,8 +120,16 @@ enemies = pygame.sprite.Group()
 # List of each bullet
 bullets = pygame.sprite.Group()
 
+# List of each cloud
+clouds = pygame.sprite.Group()
 
-
+# Creating 5 Clouds
+for i in range(5):
+    cloud = Cloud()
+    cloud.rect.x = random.randrange(700)
+    cloud.rect.y = random.randrange(350)
+    clouds.add(cloud)
+    sprites.add(cloud)
 
 # --- Create the sprites
 

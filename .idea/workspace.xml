@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d0bed7-18bc-4747-9e81-f110beb4b8ca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/game_alpha.py" afterPath="$PROJECT_DIR$/game_alpha.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="game_alpha.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game_alpha.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5082">
-              <caret line="154" column="0" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+            <state relative-caret-position="366">
+              <caret line="133" column="24" lean-forward="true" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
               <folding>
                 <element signature="e#60#73#0" expanded="true" />
               </folding>
@@ -359,8 +358,8 @@
     <entry file="file://$PROJECT_DIR$/misc.py" />
     <entry file="file://$PROJECT_DIR$/game_alpha.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5082">
-          <caret line="154" column="0" lean-forward="true" selection-start-line="154" selection-start-column="0" selection-end-line="154" selection-end-column="0" />
+        <state relative-caret-position="366">
+          <caret line="133" column="24" lean-forward="true" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
           <folding>
             <element signature="e#60#73#0" expanded="true" />
           </folding>
