@@ -4,7 +4,7 @@
 import pygame
 import random
 from menu_components import End_Screen
-from game_components import Enemy_Bullet, Player, Bullet, Enemy
+from game_components import Player, Bullet, Enemy, Explosion
 
 import time
 # Define some colors
@@ -62,21 +62,19 @@ def create_enemy(enemies,sprites):
 
 
 
-class Explosion(pygame.sprite.Sprite):
-    """ This class represents the block. """
+# class Explosion(pygame.sprite.Sprite):
+#     """ This class represents the block. """
+#
+#     def __init__(self):
+#         # Call the parent class (Sprite) constructor
+#         super().__init__()
+#
+#         self.image = pygame.image.load('img/destroyedenemy.png')
+#         self.rect = self.image.get_rect()
+#     def update(self):
+#
+#         self.rect.y += 5 #Moving Explosion Down
 
-    def __init__(self):
-        # Call the parent class (Sprite) constructor
-        super().__init__()
-
-        self.image = pygame.image.load('img/destroyedenemy.png')
-        self.rect = self.image.get_rect()
-    def update(self):
-
-        self.rect.y += 5 #Moving Explosion Down
-        if self.rect.y >= 500:
-            explosions.remove(self)
-            sprites.remove(self)
 
 
 class Cloud(pygame.sprite.Sprite):
@@ -250,6 +248,11 @@ while not done:
         player.die()
         if player.rect.y >= 400:
             sprites.add(end)
+    explosion = Explosion()
+    if explosion.rect.y >= 500:
+        explosions.remove(explosion)
+        sprites.remove(explosion)
+
 
 
 

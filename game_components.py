@@ -54,25 +54,33 @@ class Bullet(pygame.sprite.Sprite):
     def __init__(self):
         # Call the parent class (Sprite) constructor
         super().__init__()
-
+        #self.poweredup = False
         self.image = pygame.image.load('img/shot.gif')
         self.rect = self.image.get_rect()
 
     def update(self):
         """ Move the bullet. """
         self.rect.x += 30
+        # if self.poweredup():
+        #     self.image = pygame.image.load('img/bomb.png')
+        # else:
+        #     self.image = pygame.image.load('img/shot.gif')
 
-class Enemy_Bullet(pygame.sprite.Sprite):
-    """ This class represents the bullet . """
+
+
+
+class Explosion(pygame.sprite.Sprite):
+    """ This class represents the block. """
 
     def __init__(self):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
-        self.image = pygame.image.load('img/enemyshot.png')
+        self.image = pygame.image.load('img/destroyedenemy.png')
         self.rect = self.image.get_rect()
-
     def update(self):
-        """ Move the bullet. """
-        self.rect.x -= 30
+
+        self.rect.y += 5 #Moving Explosion Down
+
+
 
