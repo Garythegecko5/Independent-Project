@@ -3,10 +3,10 @@
 # Add Commit Push
 import pygame
 import random
-
+import time
 # Define some colors
 # BLACK = (0, 0, 0)
-WHITE = (76, 203, 255)
+SKY = (76, 203, 255)
 # RED = (255, 0, 0)
 # BLUE = (0, 0, 255)
 
@@ -15,6 +15,7 @@ ground = pygame.image.load('img/groundy.bmp')
 difficulty = 3
 
 # --- Functions
+
 def create_enemy(enemies,sprites):
     # This represents an enemy
     enemy = Enemy()
@@ -30,6 +31,29 @@ def create_enemy(enemies,sprites):
     return (enemies, sprites)
 
 # --- Classes
+class End_Screen(pygame.sprite.Sprite):
+    """ This class represents the endscreen. """
+
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        self.image = pygame.image.load('img/end.png')
+        self.rect = self.image.get_rect()
+
+class Enemy_Bullet(pygame.sprite.Sprite):
+    """ This class represents the bullet . """
+
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        self.image = pygame.image.load('img/enemyshot.png')
+        self.rect = self.image.get_rect()
+
+    def update(self):
+        """ Move the bullet. """
+        self.rect.x -= 30
 
 class Death(pygame.sprite.Sprite):
     """ This class represents the block. """
@@ -46,6 +70,14 @@ class Death(pygame.sprite.Sprite):
         if self.rect.y >= 500:
             deadplayers.remove(self)
             sprites.remove(self)
+            death = End_Screen()
+            death.rect.x = (0)
+            death.rect.y = (0)
+            sprites.add(death)
+
+
+
+
 
 class Explosion(pygame.sprite.Sprite):
     """ This class represents the block. """
@@ -108,6 +140,13 @@ class Enemy(pygame.sprite.Sprite):
             deadplayers.add(playerexplosion)
             sprites.add(playerexplosion)
             sprites.remove(player)
+
+        #if self.rect.y == player.rect.y:
+            #bullet2 = Enemy_Bullet()
+            #bullet2.rect.x = self.rect.x
+            #bullet2.rect.y = self.rect.y
+            #enemybullets.add(bullet2)
+            #sprites.add(bullet2)
 
 
 
@@ -179,6 +218,9 @@ explosions = pygame.sprite.Group()
 
 # List of Dead Players
 deadplayers = pygame.sprite.Group()
+
+# List of Enemy Bullets
+enemybullets = pygame.sprite.Group()
 
 # Creating 5 Clouds
 for i in range(5):
@@ -254,6 +296,9 @@ while not done:
 
 
 
+
+
+
         # Remove the bullet if it flies up off the screen
 
         if bullet.rect.x > 700:
@@ -261,10 +306,11 @@ while not done:
             sprites.remove(bullet)
 
 
+
     # --- Draw a frame
 
     # Clear the screen
-    screen.fill(WHITE)
+    screen.fill(SKY)
 
     # Draw all the spites
     sprites.draw(screen)

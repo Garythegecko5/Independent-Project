@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d0bed7-18bc-4747-9e81-f110beb4b8ca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/game_alpha.py" afterPath="$PROJECT_DIR$/game_alpha.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,8 +16,8 @@
       <file leaf-file-name="game_alpha.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game_alpha.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2530">
-              <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+            <state relative-caret-position="556">
+              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
               <folding>
                 <element signature="e#60#73#0" expanded="true" />
               </folding>
@@ -69,8 +68,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1102" />
-    <option name="y" value="56" />
+    <option name="x" value="1203" />
+    <option name="y" value="120" />
     <option name="width" value="1302" />
     <option name="height" value="1371" />
   </component>
@@ -367,10 +366,15 @@
     <entry file="file://$PROJECT_DIR$/testing.py" />
     <entry file="file://$PROJECT_DIR$/classes.py" />
     <entry file="file://$PROJECT_DIR$/misc.py" />
+    <entry file="file://$PROJECT_DIR$/img/enemyshot.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/game_alpha.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2530">
-          <caret line="112" column="0" lean-forward="true" selection-start-line="112" selection-start-column="0" selection-end-line="112" selection-end-column="0" />
+        <state relative-caret-position="556">
+          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
             <element signature="e#60#73#0" expanded="true" />
           </folding>
