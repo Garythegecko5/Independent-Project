@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="03d0bed7-18bc-4747-9e81-f110beb4b8ca" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/game_alpha.py" afterPath="$PROJECT_DIR$/game_alpha.py" />
+      <change beforePath="$PROJECT_DIR$/img/enemyplaney.bmp" afterPath="" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,8 +17,8 @@
       <file leaf-file-name="game_alpha.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game_alpha.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="366">
-              <caret line="133" column="24" lean-forward="true" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
+            <state relative-caret-position="798">
+              <caret line="54" column="52" lean-forward="true" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
               <folding>
                 <element signature="e#60#73#0" expanded="true" />
               </folding>
@@ -68,8 +69,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="1077" />
-    <option name="y" value="8" />
+    <option name="x" value="1102" />
+    <option name="y" value="56" />
     <option name="width" value="1302" />
     <option name="height" value="1371" />
   </component>
@@ -358,8 +359,8 @@
     <entry file="file://$PROJECT_DIR$/misc.py" />
     <entry file="file://$PROJECT_DIR$/game_alpha.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="366">
-          <caret line="133" column="24" lean-forward="true" selection-start-line="133" selection-start-column="24" selection-end-line="133" selection-end-column="24" />
+        <state relative-caret-position="798">
+          <caret line="54" column="52" lean-forward="true" selection-start-line="54" selection-start-column="52" selection-end-line="54" selection-end-column="52" />
           <folding>
             <element signature="e#60#73#0" expanded="true" />
           </folding>

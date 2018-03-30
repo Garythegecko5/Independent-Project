@@ -31,6 +31,23 @@ def create_enemy(enemies,sprites):
 
 # --- Classes
 
+class Explosion(pygame.sprite.Sprite):
+    """ This class represents the block. """
+
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        self.image = pygame.image.load('img/destroyedenemy.png')
+        self.rect = self.image.get_rect()
+    def update(self):
+
+        self.rect.y += 5 #Moving Explosion Down
+        if self.rect.y >= 500:
+
+            sprites.remove(self)
+
+
 class Cloud(pygame.sprite.Sprite):
     """ This class represents the block. """
 
@@ -40,6 +57,17 @@ class Cloud(pygame.sprite.Sprite):
 
         self.image = pygame.image.load('img/cloud.png')
         self.rect = self.image.get_rect()
+    def update(self):
+
+        self.rect.x -= 2 #Moving Cloud Forward
+        if self.rect.x == 1:
+            for i in range (1):
+                cloud = Cloud()
+                cloud.rect.x = (709)
+                cloud.rect.y = random.randrange(350)
+                clouds.add(cloud)
+                sprites.add(cloud)
+                sprites.remove(self)
 
 class Enemy(pygame.sprite.Sprite):
     """ This class represents the block. """
@@ -58,6 +86,7 @@ class Enemy(pygame.sprite.Sprite):
         if self.rect.x == 1:
             sprites.remove(player)
             sprites.remove(self)
+
 
 
 
@@ -123,6 +152,9 @@ bullets = pygame.sprite.Group()
 # List of each cloud
 clouds = pygame.sprite.Group()
 
+# List of each Explosion
+explosions = pygame.sprite.Group()
+
 # Creating 5 Clouds
 for i in range(5):
     cloud = Cloud()
@@ -183,7 +215,11 @@ while not done:
             bullets.remove(bullet)
             sprites.remove(bullet)
             score += 1
-
+            explosion = Explosion()
+            explosion.rect.x = enemy.rect.x
+            explosion.rect.y = enemy.rect.y
+            explosions.add(explosion)
+            sprites.add(explosion)
             print(score)
 
             for i in range(random.randint(1, difficulty)):
