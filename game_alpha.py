@@ -31,6 +31,22 @@ def create_enemy(enemies,sprites):
 
 # --- Classes
 
+class Death(pygame.sprite.Sprite):
+    """ This class represents the block. """
+
+    def __init__(self):
+        # Call the parent class (Sprite) constructor
+        super().__init__()
+
+        self.image = pygame.image.load('img/destroyedplane.gif')
+        self.rect = self.image.get_rect()
+    def update(self):
+
+        self.rect.y += 5 #Moving Explosion Down
+        if self.rect.y >= 500:
+            deadplayers.remove(self)
+            sprites.remove(self)
+
 class Explosion(pygame.sprite.Sprite):
     """ This class represents the block. """
 
@@ -44,7 +60,7 @@ class Explosion(pygame.sprite.Sprite):
 
         self.rect.y += 5 #Moving Explosion Down
         if self.rect.y >= 500:
-
+            explosions.remove(self)
             sprites.remove(self)
 
 
@@ -84,8 +100,14 @@ class Enemy(pygame.sprite.Sprite):
 
         self.rect.x -= 0.5 #Moving Enemy Forward
         if self.rect.x == 1:
-            sprites.remove(player)
+
             sprites.remove(self)
+            playerexplosion = Death()
+            playerexplosion.rect.x = player.rect.x
+            playerexplosion.rect.y = player.rect.y
+            deadplayers.add(playerexplosion)
+            sprites.add(playerexplosion)
+            sprites.remove(player)
 
 
 
@@ -154,6 +176,9 @@ clouds = pygame.sprite.Group()
 
 # List of each Explosion
 explosions = pygame.sprite.Group()
+
+# List of Dead Players
+deadplayers = pygame.sprite.Group()
 
 # Creating 5 Clouds
 for i in range(5):
