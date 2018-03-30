@@ -31,7 +31,6 @@ def create_enemy(enemies,sprites):
 
 # --- Classes
 
-
 class Enemy(pygame.sprite.Sprite):
     """ This class represents the block. """
 
@@ -39,7 +38,7 @@ class Enemy(pygame.sprite.Sprite):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
-        self.image = pygame.image.load('img/enemyplaney.bmp')
+        self.image = pygame.image.load('img/enemy.gif')
         self.rect = self.image.get_rect()
 
 
@@ -48,6 +47,7 @@ class Enemy(pygame.sprite.Sprite):
         self.rect.x -= 0.5 #Moving Enemy Forward
         if self.rect.x == 1:
             sprites.remove(player)
+            sprites.remove(self)
 
 
 
@@ -60,7 +60,7 @@ class Player(pygame.sprite.Sprite):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
-        self.image = pygame.image.load('img/planey.bmp')
+        self.image = pygame.image.load('img/planey.gif')
         self.rect = self.image.get_rect()
 
     def update(self):
@@ -80,7 +80,7 @@ class Bullet(pygame.sprite.Sprite):
         # Call the parent class (Sprite) constructor
         super().__init__()
 
-        self.image = pygame.image.load('img/shot.bmp')
+        self.image = pygame.image.load('img/shot.gif')
         self.rect = self.image.get_rect()
 
     def update(self):
@@ -108,6 +108,9 @@ enemies = pygame.sprite.Group()
 
 # List of each bullet
 bullets = pygame.sprite.Group()
+
+
+
 
 # --- Create the sprites
 
