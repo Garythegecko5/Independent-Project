@@ -121,25 +121,16 @@ while not done:
 
     # Calculate mechanics for each bullet
     for bullet in bullets:
+        for enemy in enemies:
+            if pygame.sprite.collide_rect(bullet, enemy):
+                bullets.remove(bullet)
+                sprites.remove(bullet)
+                enemy.die()
+                score += 1
+                print(score)
 
-        # See if it hit an enemy
-        enemies_hit = pygame.sprite.spritecollide(bullet, enemies, True)
-
-        # For each enemy hit, remove the bullet and add to the score
-
-        if enemies_hit:
-            bullets.remove(bullet)
-            sprites.remove(bullet)
-
-        for enemy in enemies_hit:
-
-            enemy.die()
-
-            score += 1
-            print(score)
-
-            for i in range(random.randint(1, difficulty)):
-                enemies, sprites = create_enemy(enemies, sprites)
+                for i in range(random.randint(1, difficulty)):
+                    enemies, sprites = create_enemy(enemies, sprites)
 
         # Remove the bullet if it flies up off the screen
 
