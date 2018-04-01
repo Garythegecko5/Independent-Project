@@ -4,7 +4,7 @@
 import pygame
 import random
 from menu_components import End_Screen
-from game_components import Player, Bullet, Enemy, Cloud
+from game_components import Player, Bullet, Enemy, Cloud, Blast
 
 import time
 # Define some colors
@@ -12,11 +12,11 @@ import time
 SKY = (76, 203, 255)
 # RED = (255, 0, 0)
 # BLUE = (0, 0, 255)
-
+tracker = 0
 player_plane = pygame.image.load('img/planey.bmp')
 ground = pygame.image.load('img/groundy.bmp')
 difficulty = 3
-
+runner = 0
 # --- Functions
 
 def create_enemy(enemies,sprites):
@@ -78,6 +78,8 @@ bullets = pygame.sprite.Group()
 # List of each cloud
 clouds = pygame.sprite.Group()
 
+# List of each powerup
+powerups = pygame.sprite.Group()
 
 # Creating 5 Clouds
 for i in range(5):
@@ -127,6 +129,7 @@ while not done:
                 sprites.remove(bullet)
                 enemy.die()
                 score += 1
+                tracker += 1
                 print(score)
 
                 for i in range(random.randint(1, difficulty)):
@@ -152,6 +155,27 @@ while not done:
             clouds.remove(cloud)
             sprites.remove(cloud)
 
+    if tracker == 15:
+        if runner == 0:
+            temp = Blast(709, random.randrange(350))
+            runner += 1
+            powerups.add(temp)
+            sprites.add(temp)
+    for powerup in powerups:
+        if powerup.destroyed:
+            temp = Blast(709, random.randrange(350))
+            powerups.remove(powerup)
+            sprites.remove(powerup)
+
+# Powerup Mechanics
+    bullet = Bullet(player.rect.x, player.rect.y)
+    # for powerup in powerups:
+    #     for player in sprites:
+    #         if pygame.sprite.collide_rect(powerup, player):
+    #             powerups.remove(powerup)
+    #             sprites.remove(powerup)
+    #             print("here")
+
     # Clear the screen
     screen.fill(SKY)
 
@@ -166,7 +190,7 @@ while not done:
     # Go ahead and update the screen with what I've drawn.
     pygame.display.flip()
 
-    # --- Limit to 20 frames per second
+    # --- Limit to 60 frames per second
     clock.tick(60)
     pygame.display.set_caption('Game Alpha 2.0')
 
