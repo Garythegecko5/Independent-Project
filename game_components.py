@@ -41,14 +41,14 @@ class Enemy(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
-
+        self.speed = 1
     def update(self):
 
         if not self.alive:
             self.rect.y += 5
         else:
             self.rect.x -= 0.5  # Moving Enemy Forward
-            if self.rect.x == 1:
+            if self.rect.x == self.speed:
                 Enemy.win = True
 
     def die(self):

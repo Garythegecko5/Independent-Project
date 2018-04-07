@@ -12,31 +12,33 @@ pygame.init()
 
 import time
 # Define some colors
+YELLOW = (255, 255, 0)
 BLACK = (0, 0, 0)
 SKY = (76, 203, 255)
-# RED = (255, 0, 0)
-# BLUE = (0, 0, 255)
+RED = (255, 0, 0)
+GREEN = (0, 255, 0)
 tracker = 0
 player_plane = pygame.image.load('img/planey.bmp')
 ground = pygame.image.load('img/groundy.bmp')
 difficulty = 3
 runner = 0
 swanky_small = pygame.font.Font("fonts/Swanky_and_Moo_Moo/SwankyandMooMoo.ttf", 40)
+text = swanky_small.render("Start", True, BLACK)
+text2 = swanky_small.render("Quit", True, BLACK)
 # --- Functions
 
-def game_intro():
-    intro = True
+def button(msg,x,y,w,h,ic,ac):
+    mouse = pygame.mouse.get_pos()
 
-    while intro:
-        for event in pygame.event.get():
-            print(event)
-            if event.type == pygame.QUIT:
-                pygame.quit()
-                quit()
-        image = pygame.image.load('img/menus/start.png')
-        screen.blit(image, [0, 0])
-        pygame.display.update()
-        clock.tick(60)
+    if x+w > mouse[0] > x and y+h > mouse[1] > y:
+        pygame.draw.rect(screen, ac,(x,y,w,h))
+    else:
+        pygame.draw.rect(screen, ic,(x,y,w,h))
+
+    smallText = pygame.font.Font("freesansbold.ttf",20)
+    textSurf, textRect = text, text2(msg, smallText)
+    textRect.center = ( (x+(w/2)), (y+(h/2)) )
+    screen.blit(textSurf, textRect)
 
 def create_enemy(enemies,sprites):
     # This represents an enemy
@@ -74,6 +76,37 @@ def update_score(score):
 #                 sprites.add(cloud)
 #                 sprites.remove(self)
 
+# def game_intro():
+#     intro = True
+#
+#     while intro:
+#         for event in pygame.event.get():
+#             print(event)
+#             if event.type == pygame.QUIT:
+#                 pygame.quit()
+#                 quit()
+#         image = pygame.image.load('img/menus/start.png')
+#         screen.blit(image, [0, 0])
+#         clock.tick(60)
+#         text = swanky_small.render("Start", True, BLACK)
+#         text2 = swanky_small.render("Quit", True, BLACK)
+#         pygame.draw.rect(screen, GREEN,(100,360,100,50))
+#         pygame.draw.rect(screen, RED, (500, 360, 100, 50))
+#         screen.blit(text, [100, 360, 100, 500])
+#         screen.blit(text2, [510, 360, 100, 50])
+#         pygame.display.update()
+#         mouse = pygame.mouse.get_pos()
+#
+#         if 100 + 100 > mouse[0] > 100 and 400 + 50 > mouse[1] > 300:
+#             pygame.draw.rect(screen, YELLOW, (100,360,100,50))
+#             screen.blit(text, [100, 360, 100, 500])
+#         else:
+#             pygame.draw.rect(screen, GREEN, (100,360,100,50))
+#             screen.blit(text, [100, 360, 100, 500])
+#         pygame.draw.rect(screen, RED, (500, 360, 100, 50))
+#         screen.blit(text2, [510, 360, 100, 50])
+#         pygame.display.update()
+#         clock.tick(60)
 
 # --- Create the window
 
@@ -130,7 +163,9 @@ score = 0
 #     pygame.display.update()
 #     clock.tick(60)
 
-game_intro()
+#game_intro()
+pygame.mixer.music.load('song.wav')
+pygame.mixer.music.play(0)
 # -------- Main Program Loop -----------
 while not done:
 
@@ -150,9 +185,24 @@ while not done:
             bullets.add(bullet)
 
     # --- Game logic
-
+    if score == 100:
+        enemy = Enemy()
+        enemy.speed += 1
+    if score == 200:
+        enemy = Enemy()
+        enemy.speed += 1
+    if score == 300:
+        enemy = Enemy()
+        enemy.speed += 1
+    if score == 400:
+        enemy = Enemy()
+        enemy.speed += 1
+    if score == 500:
+        enemy = Enemy()
+        enemy.speed += 1
     # Calculate mechanics for each bullet
     for bullet in bullets:
+
         for enemy in enemies:
             if pygame.sprite.collide_rect(bullet, enemy):
                 bullets.remove(bullet)
@@ -160,7 +210,8 @@ while not done:
                 enemy.die()
                 score += 1
                 tracker += 1
-                print(score)
+
+
 
                 for i in range(random.randint(1, difficulty)):
                     enemies, sprites = create_enemy(enemies, sprites)
