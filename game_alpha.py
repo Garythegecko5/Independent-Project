@@ -6,9 +6,13 @@ import random
 from menu_components import End_Screen
 from game_components import Player, Bullet, Enemy, Cloud, Blast
 
+
+# Initialize Pygame
+pygame.init()
+
 import time
 # Define some colors
-# BLACK = (0, 0, 0)
+BLACK = (0, 0, 0)
 SKY = (76, 203, 255)
 # RED = (255, 0, 0)
 # BLUE = (0, 0, 255)
@@ -17,6 +21,7 @@ player_plane = pygame.image.load('img/planey.bmp')
 ground = pygame.image.load('img/groundy.bmp')
 difficulty = 3
 runner = 0
+swanky_small = pygame.font.Font("fonts/Swanky_and_Moo_Moo/SwankyandMooMoo.ttf", 40)
 # --- Functions
 
 def create_enemy(enemies,sprites):
@@ -29,7 +34,9 @@ def create_enemy(enemies,sprites):
 
     return (enemies, sprites)
 
-
+def update_score(score):
+    text = swanky_small.render("Score: " + str(score), True, BLACK)
+    screen.blit(text, [30,0])
 # --- Classes
 
 # class Cloud(pygame.sprite.Sprite):
@@ -55,9 +62,6 @@ def create_enemy(enemies,sprites):
 
 
 # --- Create the window
-
-# Initialize Pygame
-pygame.init()
 
 # Set the height and width of the screen
 screen_width = 700
@@ -155,17 +159,17 @@ while not done:
             clouds.remove(cloud)
             sprites.remove(cloud)
 
-    if tracker == 15:
-        if runner == 0:
-            temp = Blast(709, random.randrange(350))
-            runner += 1
-            powerups.add(temp)
-            sprites.add(temp)
-    for powerup in powerups:
-        if powerup.destroyed:
-            temp = Blast(709, random.randrange(350))
-            powerups.remove(powerup)
-            sprites.remove(powerup)
+    # if tracker == 15:
+    #     if runner == 0:
+    #         temp = Blast(709, random.randrange(350))
+    #         runner += 1
+    #         powerups.add(temp)
+    #         sprites.add(temp)
+    # for powerup in powerups:
+    #     if powerup.destroyed:
+    #         temp = Blast(709, random.randrange(350))
+    #         powerups.remove(powerup)
+    #         sprites.remove(powerup)
 
 # Powerup Mechanics
     bullet = Bullet(player.rect.x, player.rect.y)
@@ -184,7 +188,7 @@ while not done:
 
     # Draw all the spites
     sprites.draw(screen)
-
+    update_score(score)
     pygame.display.update()
 
     # Go ahead and update the screen with what I've drawn.

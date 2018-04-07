@@ -121,4 +121,6 @@ class Blast(pygame.sprite.Sprite):
         self.rect.x -= 2 #Moving Powerup Forward
         if self.rect.x == 1:
             self.destroyed = True
-
+class Score(pygame.sprite.Sprite):
+    def __init__(self, x ,y):
+        super().__init__()
