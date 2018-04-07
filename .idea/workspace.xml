@@ -2,9 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d0bed7-18bc-4747-9e81-f110beb4b8ca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/game_alpha.py" afterPath="$PROJECT_DIR$/game_alpha.py" />
-      <change beforePath="$PROJECT_DIR$/game_components.py" afterPath="$PROJECT_DIR$/game_components.py" />
+      <change beforePath="$PROJECT_DIR$/img/end.png" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/img/homescreen.bmp" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/menu_components.py" afterPath="$PROJECT_DIR$/menu_components.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -18,8 +19,8 @@
       <file leaf-file-name="game_alpha.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/game_alpha.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="500">
-              <caret line="173" column="19" lean-forward="true" selection-start-line="173" selection-start-column="19" selection-end-line="173" selection-end-column="19" />
+            <state relative-caret-position="665">
+              <caret line="207" column="0" lean-forward="true" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
               <folding>
                 <element signature="e#60#73#0" expanded="true" />
               </folding>
@@ -40,8 +41,8 @@
       <file leaf-file-name="menu_components.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/menu_components.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
+            <state relative-caret-position="594">
+              <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -91,8 +92,8 @@
         <option value="$PROJECT_DIR$/misc.py" />
         <option value="$PROJECT_DIR$/classes.py" />
         <option value="$PROJECT_DIR$/img/game_components.py" />
-        <option value="$PROJECT_DIR$/menu_components.py" />
         <option value="$PROJECT_DIR$/game_components.py" />
+        <option value="$PROJECT_DIR$/menu_components.py" />
         <option value="$PROJECT_DIR$/game_alpha.py" />
       </list>
     </option>
@@ -126,6 +127,17 @@
             <path>
               <item name="Independent-Project" type="b2602c69:ProjectViewProjectNode" />
               <item name="Independent-Project" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Independent-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Independent-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Independent-Project" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Independent-Project" type="462c0819:PsiDirectoryNode" />
+              <item name="img" type="462c0819:PsiDirectoryNode" />
+              <item name="menus" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -501,14 +513,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/menu_components.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/img/powerup.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -522,10 +526,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/menu_components.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="594">
+          <caret line="18" column="41" lean-forward="true" selection-start-line="18" selection-start-column="41" selection-end-line="18" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/game_alpha.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="173" column="19" lean-forward="true" selection-start-line="173" selection-start-column="19" selection-end-line="173" selection-end-column="19" />
+        <state relative-caret-position="665">
+          <caret line="207" column="0" lean-forward="true" selection-start-line="207" selection-start-column="0" selection-end-line="207" selection-end-column="0" />
           <folding>
             <element signature="e#60#73#0" expanded="true" />
           </folding>

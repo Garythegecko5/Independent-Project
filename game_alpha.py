@@ -3,7 +3,7 @@
 # Add Commit Push
 import pygame
 import random
-from menu_components import End_Screen
+from menu_components import End_Screen, Start_Screen
 from game_components import Player, Bullet, Enemy, Cloud, Blast
 
 
@@ -110,75 +110,83 @@ score = 0
 # -------- Main Program Loop -----------
 while not done:
 
-    # --- Event Processing
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            done = True
+    start = Start_Screen()
+    sprites.add(start)
 
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            # Fire a bullet if the user clicks the mouse button
-            bullet = Bullet(player.rect.x, player.rect.y)
 
-            # Add the bullet to the lists
-            sprites.add(bullet)
-            bullets.add(bullet)
+    if start.started == False:
+        pass
 
-    # --- Game logic
+    else:
+        #--- Event Processing
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                done = True
 
-    # Calculate mechanics for each bullet
-    for bullet in bullets:
-        for enemy in enemies:
-            if pygame.sprite.collide_rect(bullet, enemy):
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                # Fire a bullet if the user clicks the mouse button
+                bullet = Bullet(player.rect.x, player.rect.y)
+
+                # Add the bullet to the lists
+                sprites.add(bullet)
+                bullets.add(bullet)
+
+        # --- Game logic
+
+        # Calculate mechanics for each bullet
+        for bullet in bullets:
+            for enemy in enemies:
+                if pygame.sprite.collide_rect(bullet, enemy):
+                    bullets.remove(bullet)
+                    sprites.remove(bullet)
+                    enemy.die()
+                    score += 1
+                    tracker += 1
+                    print(score)
+
+                    for i in range(random.randint(1, difficulty)):
+                        enemies, sprites = create_enemy(enemies, sprites)
+
+            # Remove the bullet if it flies up off the screen
+
+            if bullet.rect.x > 700:
                 bullets.remove(bullet)
                 sprites.remove(bullet)
-                enemy.die()
-                score += 1
-                tracker += 1
-                print(score)
 
-                for i in range(random.randint(1, difficulty)):
-                    enemies, sprites = create_enemy(enemies, sprites)
+        if Enemy.win:
+            player.die()
+            if player.rect.y >= 400:
+                end = End_Screen()
+                sprites.add(end)
 
-        # Remove the bullet if it flies up off the screen
+        for cloud in clouds:
+            if cloud.destroyed:
+                temp = Cloud(709, random.randrange(350))
+                clouds.add(temp)
+                sprites.add(temp)
+                clouds.remove(cloud)
+                sprites.remove(cloud)
 
-        if bullet.rect.x > 700:
-            bullets.remove(bullet)
-            sprites.remove(bullet)
+        # if tracker == 15:
+        #     if runner == 0:
+        #         temp = Blast(709, random.randrange(350))
+        #         runner += 1
+        #         powerups.add(temp)
+        #         sprites.add(temp)
+        # for powerup in powerups:
+        #     if powerup.destroyed:
+        #         temp = Blast(709, random.randrange(350))
+        #         powerups.remove(powerup)
+        #         sprites.remove(powerup)
 
-    if Enemy.win:
-        player.die()
-        if player.rect.y >= 400:
-            end = End_Screen()
-            sprites.add(end)
-
-    for cloud in clouds:
-        if cloud.destroyed:
-            temp = Cloud(709, random.randrange(350))
-            clouds.add(temp)
-            sprites.add(temp)
-            clouds.remove(cloud)
-            sprites.remove(cloud)
-
-    # if tracker == 15:
-    #     if runner == 0:
-    #         temp = Blast(709, random.randrange(350))
-    #         runner += 1
-    #         powerups.add(temp)
-    #         sprites.add(temp)
-    # for powerup in powerups:
-    #     if powerup.destroyed:
-    #         temp = Blast(709, random.randrange(350))
-    #         powerups.remove(powerup)
-    #         sprites.remove(powerup)
-
-# Powerup Mechanics
-    bullet = Bullet(player.rect.x, player.rect.y)
-    # for powerup in powerups:
-    #     for player in sprites:
-    #         if pygame.sprite.collide_rect(powerup, player):
-    #             powerups.remove(powerup)
-    #             sprites.remove(powerup)
-    #             print("here")
+    # Powerup Mechanics
+        bullet = Bullet(player.rect.x, player.rect.y)
+        # for powerup in powerups:
+        #     for player in sprites:
+        #         if pygame.sprite.collide_rect(powerup, player):
+        #             powerups.remove(powerup)
+        #             sprites.remove(powerup)
+        #             print("here")
 
     # Clear the screen
     screen.fill(SKY)
