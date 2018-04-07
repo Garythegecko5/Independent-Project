@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="03d0bed7-18bc-4747-9e81-f110beb4b8ca" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change beforePath="$PROJECT_DIR$/game_alpha.py" afterPath="$PROJECT_DIR$/game_alpha.py" />
-      <change beforePath="$PROJECT_DIR$/game_components.py" afterPath="$PROJECT_DIR$/game_components.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -19,7 +17,7 @@
         <entry file="file://$PROJECT_DIR$/game_alpha.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="533">
-              <caret line="198" column="24" lean-forward="true" selection-start-line="198" selection-start-column="24" selection-end-line="198" selection-end-column="24" />
+              <caret line="198" column="26" lean-forward="true" selection-start-line="198" selection-start-column="26" selection-end-line="198" selection-end-column="26" />
               <folding>
                 <element signature="e#60#73#0" expanded="true" />
               </folding>
@@ -629,7 +627,7 @@
     <entry file="file://$PROJECT_DIR$/game_alpha.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="533">
-          <caret line="198" column="24" lean-forward="true" selection-start-line="198" selection-start-column="24" selection-end-line="198" selection-end-column="24" />
+          <caret line="198" column="26" lean-forward="true" selection-start-line="198" selection-start-column="26" selection-end-line="198" selection-end-column="26" />
           <folding>
             <element signature="e#60#73#0" expanded="true" />
           </folding>

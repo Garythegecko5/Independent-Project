@@ -185,21 +185,21 @@ while not done:
             bullets.add(bullet)
 
     # --- Game logic
-    if score == 100:
-        enemy = Enemy()
-        enemy.speed += 1
-    if score == 200:
-        enemy = Enemy()
-        enemy.speed += 1
-    if score == 300:
-        enemy = Enemy()
-        enemy.speed += 1
-    if score == 400:
-        enemy = Enemy()
-        enemy.speed += 1
-    if score == 500:
-        enemy = Enemy()
-        enemy.speed += 1
+    # if score == 100:
+    #     enemy = Enemy()
+    #     enemy.speed += 1
+    # if score == 200:
+    #     enemy = Enemy()
+    #     enemy.speed += 1
+    # if score == 300:
+    #     enemy = Enemy()
+    #     enemy.speed += 1
+    # if score == 400:
+    #     enemy = Enemy()
+    #     enemy.speed += 1
+    # if score == 500:
+    #     enemy = Enemy()
+    #     enemy.speed += 1
     # Calculate mechanics for each bullet
     for bullet in bullets:
 
