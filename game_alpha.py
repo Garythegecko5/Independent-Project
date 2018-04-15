@@ -23,22 +23,9 @@ ground = pygame.image.load('img/groundy.bmp')
 difficulty = 3
 runner = 0
 swanky_small = pygame.font.Font("fonts/Swanky_and_Moo_Moo/SwankyandMooMoo.ttf", 40)
-text = swanky_small.render("Start", True, BLACK)
-text2 = swanky_small.render("Quit", True, BLACK)
 # --- Functions
 
-def button(msg,x,y,w,h,ic,ac):
-    mouse = pygame.mouse.get_pos()
 
-    if x+w > mouse[0] > x and y+h > mouse[1] > y:
-        pygame.draw.rect(screen, ac,(x,y,w,h))
-    else:
-        pygame.draw.rect(screen, ic,(x,y,w,h))
-
-    smallText = pygame.font.Font("freesansbold.ttf",20)
-    textSurf, textRect = text, text2(msg, smallText)
-    textRect.center = ( (x+(w/2)), (y+(h/2)) )
-    screen.blit(textSurf, textRect)
 
 def create_enemy(enemies,sprites):
     # This represents an enemy
@@ -53,60 +40,62 @@ def create_enemy(enemies,sprites):
 def update_score(score):
     text = swanky_small.render("Score: " + str(score), True, BLACK)
     screen.blit(text, [30,0])
-# --- Classes
 
-# class Cloud(pygame.sprite.Sprite):
-#     """ This class represents the block. """
-#
-#     def __init__(self):
-#         # Call the parent class (Sprite) constructor
-#         super().__init__()
-#
-#         self.image = pygame.image.load('img/cloud.png')
-#         self.rect = self.image.get_rect()
-#     def update(self):
-#
-#         self.rect.x -= 2 #Moving Cloud Forward
-#         if self.rect.x == 1:
-#             for i in range (1):
-#                 cloud = Cloud()
-#                 cloud.rect.x = (709)
-#                 cloud.rect.y = random.randrange(350)
-#                 clouds.add(cloud)
-#                 sprites.add(cloud)
-#                 sprites.remove(self)
 
-# def game_intro():
-#     intro = True
-#
-#     while intro:
-#         for event in pygame.event.get():
-#             print(event)
-#             if event.type == pygame.QUIT:
-#                 pygame.quit()
-#                 quit()
-#         image = pygame.image.load('img/menus/start.png')
-#         screen.blit(image, [0, 0])
-#         clock.tick(60)
-#         text = swanky_small.render("Start", True, BLACK)
-#         text2 = swanky_small.render("Quit", True, BLACK)
-#         pygame.draw.rect(screen, GREEN,(100,360,100,50))
-#         pygame.draw.rect(screen, RED, (500, 360, 100, 50))
-#         screen.blit(text, [100, 360, 100, 500])
-#         screen.blit(text2, [510, 360, 100, 50])
-#         pygame.display.update()
-#         mouse = pygame.mouse.get_pos()
-#
-#         if 100 + 100 > mouse[0] > 100 and 400 + 50 > mouse[1] > 300:
-#             pygame.draw.rect(screen, YELLOW, (100,360,100,50))
-#             screen.blit(text, [100, 360, 100, 500])
-#         else:
-#             pygame.draw.rect(screen, GREEN, (100,360,100,50))
-#             screen.blit(text, [100, 360, 100, 500])
-#         pygame.draw.rect(screen, RED, (500, 360, 100, 50))
-#         screen.blit(text2, [510, 360, 100, 50])
-#         pygame.display.update()
-#         clock.tick(60)
+def game_intro():
+    intro = True
+
+    while intro:
+        for event in pygame.event.get():
+            print(event)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                quit()
+
+        image = pygame.image.load('img/menus/start.png')
+        screen.blit(image, [0, 0])
+        clock.tick(60)
+
+        start_text = swanky_small.render("Start", True, BLACK)
+        end_text = swanky_small.render("Quit", True, BLACK)
+        pygame.draw.rect(screen, GREEN,(100,360,100,50))
+        pygame.draw.rect(screen, RED, (500, 360, 100, 50))
+        screen.blit(start_text, [100, 360, 100, 500])
+        screen.blit(end_text, [510, 360, 100, 50])
+
+        mouse = pygame.mouse.get_pos()
+
+#Start Box
+        if 200 > mouse[0] > 100 and 410 > mouse[1] > 360:
+            pygame.draw.rect(screen, YELLOW, (100,360,100,50))
+            screen.blit(start_text, [100, 360, 100, 500])
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    intro = False
+
+        else:
+            pygame.draw.rect(screen, GREEN, (100,360,100,50))
+            screen.blit(start_text, [100, 360, 100, 500])
+
+
+
+#End Box
+        if 600 > mouse[0] > 500 and 410 > mouse[1] > 360:
+            pygame.draw.rect(screen, YELLOW, (500, 360, 100, 50))
+            screen.blit(end_text, [510, 360, 100, 50])
+            for event in pygame.event.get():
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    pygame.quit()
+                    quit()
+        else:
+            pygame.draw.rect(screen, RED, (500, 360, 100, 50))
+            screen.blit(end_text, [510, 360, 100, 50])
+
+
+
+
+        pygame.display.update()
+        clock.tick(60)
 
 # --- Create the window
 
@@ -154,16 +143,9 @@ clock = pygame.time.Clock()
 
 score = 0
 
-# start = Start_Screen()
-#
-# sprites.add(start)
-# while start.started == False:
-#     image = pygame.image.load('img/menus/start.png')
-#     screen.blit(image, [0, 0])
-#     pygame.display.update()
-#     clock.tick(60)
 
-#game_intro()
+
+game_intro()
 pygame.mixer.music.load('song.wav')
 pygame.mixer.music.play(0)
 # -------- Main Program Loop -----------
@@ -227,6 +209,7 @@ while not done:
         if player.rect.y >= 400:
             end = End_Screen()
             sprites.add(end)
+
 
     for cloud in clouds:
         if cloud.destroyed:
