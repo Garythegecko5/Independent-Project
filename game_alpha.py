@@ -13,6 +13,8 @@ import os, sys
 #     os.execl(python, python, *sys.argv)
 pygame.init()
 
+gameIcon = pygame.image.load('img/icon.gif')
+pygame.display.set_icon(gameIcon)
 # Define some colors
 YELLOW = (255, 255, 0)
 BLACK = (0, 0, 0)
@@ -106,7 +108,7 @@ def game():
     # Clear the screen
     screen.fill(SKY)
 
-    pygame.mixer.music.load('song.wav')
+    pygame.mixer.music.load('music/song.wav')
     pygame.mixer.music.play(-1)
 
     # This is a list of every sprite. All blocks and the player block as well.
