@@ -1,16 +1,9 @@
 import pygame
 import random
 from game_components import Player, Bullet, Enemy, Cloud, Blast
-import time
-import os, sys
 
 
-# def restart_program():
-#     """Restarts the current program.
-#     Note: this function does not return. Any cleanup action (like
-#     saving data) must be done before calling this function."""
-#     python = sys.executable
-#     os.execl(python, python, *sys.argv)
+
 pygame.init()
 
 gameIcon = pygame.image.load('img/icon.gif')
@@ -153,13 +146,14 @@ def game():
             if event.type == pygame.QUIT:
                 done = True
 
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                # Fire a bullet if the user clicks the mouse button
-                bullet = Bullet(player.rect.x, player.rect.y)
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    # Fire a bullet if the user clicks the mouse button
+                    bullet = Bullet(player.rect.x, player.rect.y)
 
-                # Add the bullet to the lists
-                sprites.add(bullet)
-                bullets.add(bullet)
+                    # Add the bullet to the lists
+                    sprites.add(bullet)
+                    bullets.add(bullet)
 
         for bullet in bullets:
 
@@ -227,7 +221,7 @@ def game():
         # --- Limit to 60 frames per second
         clock.tick(60)
 
-
+#
 
 
 
@@ -241,6 +235,7 @@ def game_end():
     looper = False
     image = pygame.image.load('img/menus/end.png')
     screen.blit(image, [0, 0])
+
 
 
     while not looper:
@@ -315,9 +310,9 @@ screen = pygame.display.set_mode([screen_width, screen_height])
 # Used to manage how fast the screen updates
 clock = pygame.time.Clock()
 
+pygame.display.set_caption('Stratosfight')
 game_intro()
 while True:
-    pygame.display.set_caption('Stratosfight')
     game()
     game_end()
     Enemy.win = False
